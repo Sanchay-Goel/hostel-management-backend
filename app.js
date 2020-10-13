@@ -9,6 +9,8 @@ const expressValidators = require("express-validator");
 const commonRoutes = require("./routes/commonRoutes");
 const userRoutes = require("./routes/userRoutes");
 const fellowshipRoutes = require("./routes/fellowshipRoutes");
+const hostelRoutes = require('./routes/hostelRoutes');
+
 // middlewares
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -28,6 +30,7 @@ app.use(bodyParser.json());
 app.use("/api", userRoutes);
 app.use("/api", commonRoutes);
 app.use("/api", fellowshipRoutes);
+app.use('/api', hostelRoutes);
 
 
 
