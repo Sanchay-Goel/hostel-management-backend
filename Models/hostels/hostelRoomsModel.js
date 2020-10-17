@@ -6,21 +6,20 @@ const HostelRooms = sequelize.define(
     {
         id: {
             type: Sequelize.STRING,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
-        floor: {
-            type: Sequelize.INTEGER
+        hostel_detail_id: Sequelize.INTEGER,
+        floor: Sequelize.STRING,
+        room_name: Sequelize.STRING,
+        no_of_bed: Sequelize.INTEGER,
+        modify_date: {
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.NOW,
         },
-        room_number: {
-            type: Sequelize.STRING
-        },
-        bed_number: {
-            type: Sequelize.INTEGER,
-            defaultValue: 0
-        },
-        empty: {
+        is_deleted: {
             type: Sequelize.BOOLEAN,
-            defaultValue: 0
+            defaultValue: false
         }
     }, 
     {
@@ -28,6 +27,7 @@ const HostelRooms = sequelize.define(
         timestamps: false
     }
 );
+HostelRooms.sync();
 
 module.exports = {
     HostelRooms
