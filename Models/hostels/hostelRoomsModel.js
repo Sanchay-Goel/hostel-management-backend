@@ -2,10 +2,10 @@ const Sequelize = require('sequelize');
 const sequelize = require('../../Models');
 
 const HostelRooms = sequelize.define(
-    'hostel_rooms', 
+    'hs_room_details', 
     {
         id: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
@@ -23,7 +23,7 @@ const HostelRooms = sequelize.define(
         }
     }, 
     {
-        tableName: 'hostel_rooms',
+        tableName: 'hs_room_details',
         timestamps: false
     }
 );

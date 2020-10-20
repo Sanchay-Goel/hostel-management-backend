@@ -30,6 +30,7 @@ const HostelDetails = sequelize.define(
         room_in_floor12: Sequelize.INTEGER,
         room_in_floor13: Sequelize.INTEGER,
         room_in_floor14: Sequelize.INTEGER,
+        room_in_floor15: Sequelize.INTEGER,
         status: {
             type: Sequelize.ENUM('Active', 'Inactive'),
             defaultValue: 'Active'
@@ -38,7 +39,10 @@ const HostelDetails = sequelize.define(
             type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
         },
-        is_deleted: Sequelize.BOOLEAN,
+        is_deleted: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: false
+        },
     }, 
     {
         tableName: 'hs_hostel_details',
