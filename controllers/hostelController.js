@@ -59,7 +59,7 @@ module.exports.addHostelDetails = async function(req, res){
 
 module.exports.getHostelDetailsById = async function(req, res){
     console.log("Sending details of particular hostel");
-    let hostelId = req.body.id;
+    let hostelId = req.params.id;
     HostelDetails.findAll({
         where: {
             id: hostelId
@@ -80,7 +80,41 @@ module.exports.getHostelDetailsById = async function(req, res){
 };
 
 module.exports.editHostelDetailsById = async function(req, res){
-    console.log("Editing particular hostel details");
+    console.log("Editing particular hostel details ");
+    console.log(req.body);
+    let id = req.params.id;
+    HostelDetails.update({
+        room_in_floor0: req.body.room_in_floor0,
+        room_in_floor1: req.body.room_in_floor1,
+        room_in_floor2: req.body.room_in_floor2,
+        room_in_floor3: req.body.room_in_floor3,
+        room_in_floor4: req.body.room_in_floor4,
+        room_in_floor5: req.body.room_in_floor5,
+        room_in_floor6: req.body.room_in_floor6,
+        room_in_floor7: req.body.room_in_floor7,
+        room_in_floor8: req.body.room_in_floor8,
+        room_in_floor9: req.body.room_in_floor9,
+        room_in_floor10: req.body.room_in_floor10,
+        room_in_floor11: req.body.room_in_floor11,
+        room_in_floor12: req.body.room_in_floor12,
+        room_in_floor13: req.body.room_in_floor13,
+        room_in_floor14: req.body.room_in_floor14,
+        room_in_floor15: req.body.room_in_floor15,
+    }, {
+        where: {
+            id: req.body.id
+        }
+    })
+    .then(response => {
+        res.status(200).json({
+            response: response
+        });
+    })
+    .catch(error => {
+        res.status(404).json({
+            error: error
+        });
+    });
     res.status(200).json({
         message: 'Put request'
     });
