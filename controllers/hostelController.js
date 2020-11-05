@@ -157,8 +157,43 @@ module.exports.editRoomsDetails = async function(req, res){
     });
 };
 
-module.exports.addHostelInmate = async function(req, res){
+module.exports.getHostelStudentsList = async function(req, res){
+    console.log("getting student Adm. No. for particular hostel and block");
+    const hostel_name = req.params.hostel;
+    console.log(hostel_name);
+    HostelStudentsList.findAll({
+        where: {
+            hostel_name: hostel_name,
+        }
+    })
+    .then(response => {
+        console.log(response);
+        res.status(200).json({
+            response: response
+        });
+    })
+    .catch(error => {
+        console.log("Error : " + error);
+        res.status(404).json({
+            error: error
+        });
+    });
+    
+};
+
+module.exports.addHostelStudentsList = async function(req, res){
     console.log("Adding student Adm. No. in particular hostel and block");
+    const students = req.body.students;
+    console.log(students);
+    await HostelStudentsList.bulkCreate(students)
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || 'Some error occured while adding hostel'
+        });
+    });
     res.status(200).json({
         message: 'Post request'
     });
